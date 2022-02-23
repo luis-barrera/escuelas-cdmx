@@ -23,7 +23,7 @@ Estos servicios son 3:
 - `/privadas`, con la información de las escuelas privadas.
 - `/publicas`, con la información de las escuelas publicas.
 
-![Arquitectura](./escuelas-cdmx.jpeg)
+![Arquitectura](./escuelas-cdmx.jpg)
 
 ## Tecnologías usadas
 
