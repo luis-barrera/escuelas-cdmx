@@ -9,8 +9,6 @@
   "author": "luis-barrera",
   "license": "ISC",
   "dependencies": {
-    "chart": "^0.1.2",
-    "express": "^4.17.3",
-    "leaflet": "^1.7.1"
+    "express": "^4.17.3"
   }
 }
