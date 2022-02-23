@@ -31,9 +31,11 @@ html,body{
 }
 
 #controls{
-	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 	font-family: arial;
-	width: 60%;
+	width: 40%;
 	margin: 0 auto;
 }
 
