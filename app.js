@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.use(express.static("public"));
+
 const alcaldias = require(__dirname + "/data/alcaldias.json")
 const privadas = require(__dirname + "/data/privadas.json")
 const publicas = require(__dirname + "/data/publicas.json")
