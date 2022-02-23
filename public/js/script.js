@@ -89,19 +89,6 @@ const iconPublica = L.divIcon({
 	html: `<span style="${markerHtmlPublica}"/>`
 })
 
-// Variables globales
-var alcaldias
-var privadas
-var publicas
-var datos
-var contadorTotal
-var config  // Config del chart
-var ctx  // Cotext para el chart
-var marcadoresTotal
-var marcadoresPublicas
-var marcadoresPrivadas
-var mapaAlcaldias
-var myChart
 
 Promise.all([
 	fetch('/alcaldias'),
