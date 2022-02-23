@@ -89,8 +89,19 @@ const iconPublica = L.divIcon({
 	html: `<span style="${markerHtmlPublica}"/>`
 })
 
+// Variables globales
 var alcaldias
 var privadas
+var publicas
+var datos
+var contadorTotal
+var config  // Config del chart
+var ctx  // Cotext para el chart
+var marcadoresTotal
+var marcadoresPublicas
+var marcadoresPrivadas
+var mapaAlcaldias
+var myChart
 
 Promise.all([
 	fetch('/alcaldias'),
@@ -262,80 +273,92 @@ Promise.all([
 	// Creamos el chart
 	var myChart = new Chart(ctx, config);
 
+	// Funciones para mostrar u ocultar info
 	function showPrivadas(){
- 	 // Cambiamos los datos del datasets para que sean solo los de las privadas
- 	 datos.datasets = [{
-         	 label: 'Escuelas Privadas',
-         	 data: contadorTotal[1],
-         	 borderColor: 'white',
-         	 backgroundColor: '#93c47d'
-     	 }];
- 	 // Cambiamos el título del chart
- 	 config.options.plugins.title.text = 'Escuelas privadas en la CDMX por alcaldías';
+		// Cambiamos los datos del datasets para que sean solo los de las privadas
+		datos.datasets = [{
+			label: 'Escuelas Privadas',
+			data: contadorTotal[1],
+			borderColor: 'white',
+			backgroundColor: '#93c47d'
+		}];
+		// Cambiamos el título del chart
+		config.options.plugins.title.text = 'Escuelas privadas en la CDMX por alcaldías';
 
- 	 // Quitamos todos los marcadores y volvemos a insertar los marcadores de privadas
- 	 mapaAlcaldias.removeLayer(marcadoresTotal);
- 	 mapaAlcaldias.removeLayer(marcadoresPublicas);
- 	 mapaAlcaldias.removeLayer(marcadoresPrivadas);
- 	 marcadoresPrivadas.addTo(mapaAlcaldias);
+		// Quitamos todos los marcadores y volvemos a insertar los marcadores de privadas
+		mapaAlcaldias.removeLayer(marcadoresTotal);
+		mapaAlcaldias.removeLayer(marcadoresPublicas);
+		mapaAlcaldias.removeLayer(marcadoresPrivadas);
+		marcadoresPrivadas.addTo(mapaAlcaldias);
 
- 	 // Redibujamos el chart
- 	 myChart.destroy();
- 	 myChart = new Chart(ctx, config);
+		// Redibujamos el chart
+		myChart.destroy();
+		myChart = new Chart(ctx, config);
 	}
+
 
 	function showPublicas(){
- 	 // Cambiamos los datos del datasets para que sean solo los de las publicas
- 	 datos.datasets = [{
-         	 label: 'Escuelas publicas',
-         	 data: contadorTotal[2],
-         	 borderColor: 'white',
-         	 backgroundColor: '#f6b26b'
-     	 }];
- 	 // Cambiamos el título del chart
- 	 config.options.plugins.title.text = 'Escuelas públicas en la CDMX por alcaldías';
+		// Cambiamos los datos del datasets para que sean solo los de las publicas
+		datos.datasets = [{
+			label: 'Escuelas publicas',
+			data: contadorTotal[2],
+			borderColor: 'white',
+			backgroundColor: '#f6b26b'
+		}];
+		// Cambiamos el título del chart
+		config.options.plugins.title.text = 'Escuelas públicas en la CDMX por alcaldías';
 
- 	 // Quitamos todos los marcadores y volvemos a insertar los marcadores de privadas
- 	 mapaAlcaldias.removeLayer(marcadoresTotal);
- 	 mapaAlcaldias.removeLayer(marcadoresPublicas);
- 	 mapaAlcaldias.removeLayer(marcadoresPrivadas);
- 	 marcadoresPublicas.addTo(mapaAlcaldias);
+		// Quitamos todos los marcadores y volvemos a insertar los marcadores de privadas
+		mapaAlcaldias.removeLayer(marcadoresTotal);
+		mapaAlcaldias.removeLayer(marcadoresPublicas);
+		mapaAlcaldias.removeLayer(marcadoresPrivadas);
+		marcadoresPublicas.addTo(mapaAlcaldias);
 
- 	 // Redibujamos el chart
- 	 myChart.destroy();
- 	 myChart = new Chart(ctx, config);
+		// Redibujamos el chart
+		myChart.destroy();
+		myChart = new Chart(ctx, config);
 	}
 
+
 	function showTodas(){
- 	 datos.datasets = [{
-     	 // Agregamos los datos del número de escuelas privadas en un color verde
-         	 label: 'Escuelas Privadas',
-         	 data: contadorTotal[1],
-         	 borderColor: 'white',
-         	 backgroundColor: '#93c47d'
-     	 },{
-         	 // Agregamos los datos del número de escuelas publicas en un color naranja
-         	 label: 'Escuelas publicas',
-         	 data: contadorTotal[2],
-         	 borderColor: 'white',
-         	 backgroundColor: '#f6b26b'
-     	 }];
+		datos.datasets = [{
+			// Agregamos los datos del número de escuelas privadas en un color verde
+			label: 'Escuelas Privadas',
+			data: contadorTotal[1],
+			borderColor: 'white',
+			backgroundColor: '#93c47d'
+		},{
+			// Agregamos los datos del número de escuelas publicas en un color naranja
+			label: 'Escuelas publicas',
+			data: contadorTotal[2],
+			borderColor: 'white',
+			backgroundColor: '#f6b26b'
+		}];
 
- 	 // Cambiamos el título del chart
- 	 config.options.plugins.title.text = 'Escuelas en la CDMX por alcaldías';
+		// Cambiamos el título del chart
+		config.options.plugins.title.text = 'Escuelas en la CDMX por alcaldías';
 
- 	 // Agregamos todos los marcadores
- 	 mapaAlcaldias.removeLayer(marcadoresTotal);
- 	 mapaAlcaldias.removeLayer(marcadoresPublicas);
- 	 mapaAlcaldias.removeLayer(marcadoresPrivadas);
- 	 marcadoresTotal.addTo(mapaAlcaldias);
+		// Agregamos todos los marcadores
+		mapaAlcaldias.removeLayer(marcadoresTotal);
+		mapaAlcaldias.removeLayer(marcadoresPublicas);
+		mapaAlcaldias.removeLayer(marcadoresPrivadas);
+		marcadoresTotal.addTo(mapaAlcaldias);
 
- 	 // Redibujamos el chart
- 	 myChart.destroy();
- 	 myChart = new Chart(ctx, config);
-}
+		// Redibujamos el chart
+		myChart.destroy();
+		myChart = new Chart(ctx, config);
+	}
+
+	// Agrega los listeners para los botones
+	document.getElementById("showPublicasButton").addEventListener("click", showPublicas)
+	document.getElementById("showPrivadasButton").addEventListener("click", showPrivadas)
+	document.getElementById("showTodasButton").addEventListener("click", showTodas)
+
 }).catch(function(error){
 	// Mostrar errores de obtener los datos del servidor
 	console.log(error)
+
 });
+
+
 
