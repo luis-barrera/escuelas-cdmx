@@ -14,6 +14,9 @@ const publicas = require(__dirname + "/data/publicas.json")
 app.get('/', (req, res) => {
   res.sendFile(__dirname + "/index.html")
 })
+app.get('/home', (req, res) => {
+  res.sendFile(__dirname + "/index.html")
+})
 
 // Rutas para obtener los datos a través de get requests.
 app.get('/alcaldias', (req, res) => {
