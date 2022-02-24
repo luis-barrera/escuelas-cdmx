@@ -33,5 +33,5 @@ app.get('/publicas', (req, res) => {
 
 // Puerto de la app
 app.listen(PORT, () => {
-  console.log(`Listening on port ${port}`)
+  console.log(`Listening on port ${PORT}`)
 })
