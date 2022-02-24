@@ -1,6 +1,6 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Hacemos público el dir "public" que contiene js y css para la página
 app.use(express.static("public"));
@@ -32,6 +32,6 @@ app.get('/publicas', (req, res) => {
 })
 
 // Puerto de la app
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Listening on port ${port}`)
 })
