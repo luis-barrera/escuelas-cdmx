@@ -4,24 +4,28 @@ html,body{
 }
 
 #container{
-	display: grid;
-	grid-template-columns: 50% 50%;
-	margin:0 auto;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	align-items: center;
 	width: 80%;
-	height: 80%;
-	top: 10%;
+	margin: 10px auto;
+	gap: 20px;
 }
 
 #alcaldiasMap{
-	margin: 10px;
+	flex: 200px;
 	border-radius: 10px;
+	min-height: 800px;
+	min-width: 400px;
 }
 
 #chart{
-	margin: 10px;
-	padding: 10px;
+	flex: 200px;
 	border-radius: 10px;
 	background-color: #f3f6f4;
+	min-height: 800px;
+	min-width: 400px;
 }
 
 .texto{
@@ -35,7 +39,7 @@ html,body{
 	flex-direction: row;
 	justify-content: space-evenly;
 	font-family: arial;
-	width: 40%;
+	width: 80%;
 	margin: 0 auto;
 }
 
