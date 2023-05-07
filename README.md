@@ -2,7 +2,7 @@
 
 ---
 
-[Live Demo en Heroku](https://young-citadel-27810.herokuapp.com/)
+[Live Demo en Vercel](https://escuelas-cdmx-vite.vercel.app/)
 
 ![Demo](./screenshot.png)
 
